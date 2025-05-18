@@ -7,7 +7,7 @@
 #  namespace: flux-system
 #spec:
 #  releaseName: demo-kibana
-#  targetNamespace: opensearch
+#  targetNamespace: elastic
 #  chart:
 #    spec:
 #      chart: eck-kibana
@@ -71,7 +71,7 @@
 #      # If not specified, then the namespace of the Kibana resource
 #      # will be assumed.
 #      #
-#      namespace: opensearch
+#      namespace: elastic
 #
 #    # Reference to an EnterpriseSearch running in the same Kubernetes cluster
 #    #

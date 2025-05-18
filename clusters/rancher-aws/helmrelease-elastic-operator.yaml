@@ -15,7 +15,8 @@ metadata:
   namespace: flux-system
 spec:
   releaseName: eck-operator
-  targetNamespace: opensearch
+  targetNamespace: elastic
+  createNamespace: true
   chart:
     spec:
       chart: eck-operator

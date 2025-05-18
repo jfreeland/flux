@@ -7,7 +7,8 @@ metadata:
   namespace: flux-system
 spec:
   releaseName: demo
-  targetNamespace: opensearch
+  targetNamespace: elastic
+  createNamespace: true
   chart:
     spec:
       chart: eck-elasticsearch
