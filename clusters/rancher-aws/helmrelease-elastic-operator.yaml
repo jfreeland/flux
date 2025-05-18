@@ -16,7 +16,8 @@ metadata:
 spec:
   releaseName: eck-operator
   targetNamespace: elastic
-  createNamespace: true
+  install:
+    createNamespace: true
   chart:
     spec:
       chart: eck-operator

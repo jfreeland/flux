@@ -8,7 +8,8 @@ metadata:
 spec:
   releaseName: demo
   targetNamespace: elastic
-  createNamespace: true
+  install:
+    createNamespace: true
   chart:
     spec:
       chart: eck-elasticsearch
