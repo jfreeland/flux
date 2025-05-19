@@ -11,6 +11,3 @@ spec:
     kind: GitRepository
     name: flux-system
   targetNamespace: flux-system
-  dependsOn:
-    - name: crds
-      namespace: flux-system
