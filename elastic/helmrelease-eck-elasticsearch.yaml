@@ -212,7 +212,8 @@ spec:
           #
           #node.attr.zone: $${ZONE}
           node.attr.zone: ${ZONE}
-          cluster.routing.allocation.awareness.attributes: k8s_node_name,zone
+          cluster.routing.allocation.awareness.attributes: zone
+          cluster.routing.allocation.same_shard.host: true
           node.store.allow_mmap: false
 
         podTemplate:
