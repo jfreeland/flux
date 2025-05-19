@@ -1487,7 +1487,7 @@ spec:
     # for more info.
     # +docs:hidden
     enabled: true
-#---
+---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
