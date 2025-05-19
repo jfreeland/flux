@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: ./clusters/rancher-aws/elastic
+  path: ./elastic
   prune: true
   sourceRef:
     kind: GitRepository
