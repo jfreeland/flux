@@ -1,0 +1,57 @@
+# https://artifacthub.io/packages/helm/cloudnative-pg/cloudnative-pg
+# https://github.com/cloudnative-pg/charts
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cnpg-system
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: cnpg
+  namespace: flux-system
+spec:
+  interval: 5m
+  url: https://cloudnative-pg.github.io/charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: cloudnative-pg
+  namespace: flux-system
+spec:
+  releaseName: cnpg
+  targetNamespace: kube-system
+  chart:
+    spec:
+      chart: cloudnative-pg
+      version: 0.24.0
+      sourceRef:
+        kind: HelmRepository
+        name: cnpg
+  interval: 5m
+  values:
+    replicaCount: 1
+    image:
+      repository: ghcr.io/cloudnative-pg/cloudnative-pg
+      pullPolicy: IfNotPresent
+    crds:
+      create: true
+    config:
+      create: true
+      name: cnpg-controller-manager-config
+      clusterWide: true
+      # https://cloudnative-pg.io/documentation/current/operator_conf/#available-options
+      data: {}
+      # INHERITED_ANNOTATIONS: categories
+      # INHERITED_LABELS: environment, workload, app
+      # WATCH_NAMESPACE: namespace-a,namespace-b
+    resources:
+      {}
+      # limits:
+      #   cpu: 100m
+      #   memory: 200Mi
+      # requests:
+      #   cpu: 100m
+      #   memory: 100Mi
