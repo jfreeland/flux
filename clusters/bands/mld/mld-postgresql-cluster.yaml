@@ -18,6 +18,4 @@ spec:
   storage:
     size: 10Gi
     storageClass: local-path
-  monitoring:
-    enablePodMonitor: true
   priorityClassName: high-priority
