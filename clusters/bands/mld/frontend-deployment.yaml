@@ -44,15 +44,15 @@ spec:
                 secretKeyRef:
                   name: frontend-secrets
                   key: auth-secret
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 3000
-            initialDelaySeconds: 30
-            periodSeconds: 10
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 3000
-            initialDelaySeconds: 5
-            periodSeconds: 5
+          #livenessProbe:
+          #  httpGet:
+          #    path: /
+          #    port: 3000
+          #  initialDelaySeconds: 30
+          #  periodSeconds: 10
+          #readinessProbe:
+          #  httpGet:
+          #    path: /
+          #    port: 3000
+          #  initialDelaySeconds: 5
+          #  periodSeconds: 5
