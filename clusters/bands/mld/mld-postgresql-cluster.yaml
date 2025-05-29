@@ -16,6 +16,5 @@ spec:
       secret:
         name: mld-db-user
   storage:
-    #size: 10Gi
+    size: 1Gi
     #storageClass: local-path
-    emptyDir: {}
