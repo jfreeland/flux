@@ -23,7 +23,7 @@ spec:
     #            name: frontend-service
     #            port:
     #              number: 80
-    - host: machinelearningdegrees.com
+    - host: www.machinelearningdegrees.com
       http:
         paths:
           - path: /api
