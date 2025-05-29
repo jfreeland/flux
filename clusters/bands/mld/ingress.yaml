@@ -4,7 +4,7 @@ metadata:
   name: mldegrees-ingress
   namespace: mld
 spec:
-  ingressClassName: cloudflare-tunnel-mld
+  ingressClassName: cloudflare-tunnel-f6d
   rules:
     #- host: mldegrees.com
     #  http:
