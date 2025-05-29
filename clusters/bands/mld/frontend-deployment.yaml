@@ -21,14 +21,14 @@ spec:
           ports:
             - containerPort: 3000
           env:
-            - name: BACKEND_URL
-              value: "http://backend-service:8080"
+            #- name: BACKEND_URL
+            #  value: "http://backend-service:8080"
             - name: NODE_ENV
               value: "production"
             - name: NEXTAUTH_URL
-              value: "http://localhost:3000"
+              value: "https://mldegrees.com"
             - name: NEXT_PUBLIC_API_URL
-              value: "http://backend-service:8080"
+              value: "https://mldegrees.com/api"
             - name: GOOGLE_CLIENT_ID
               valueFrom:
                 secretKeyRef:
