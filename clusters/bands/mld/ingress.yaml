@@ -9,28 +9,7 @@ spec:
     - host: mldegrees.com
       http:
         paths:
-          - path: /api/programs
-            pathType: Prefix
-            backend:
-              service:
-                name: backend-service
-                port:
-                  number: 8080
-          - path: /api/vote
-            pathType: Prefix
-            backend:
-              service:
-                name: backend-service
-                port:
-                  number: 8080
-          - path: /api/auth
-            pathType: Exact
-            backend:
-              service:
-                name: backend-service
-                port:
-                  number: 8080
-          - path: /api/health
+          - path: /api
             pathType: Prefix
             backend:
               service:
@@ -47,28 +26,7 @@ spec:
     - host: www.mldegrees.com
       http:
         paths:
-          - path: /api/programs
-            pathType: Prefix
-            backend:
-              service:
-                name: backend-service
-                port:
-                  number: 8080
-          - path: /api/vote
-            pathType: Prefix
-            backend:
-              service:
-                name: backend-service
-                port:
-                  number: 8080
-          - path: /api/auth
-            pathType: Exact
-            backend:
-              service:
-                name: backend-service
-                port:
-                  number: 8080
-          - path: /api/health
+          - path: /api
             pathType: Prefix
             backend:
               service:
@@ -85,28 +43,7 @@ spec:
     - host: machinelearningdegrees.com
       http:
         paths:
-          - path: /api/programs
-            pathType: Prefix
-            backend:
-              service:
-                name: backend-service
-                port:
-                  number: 8080
-          - path: /api/vote
-            pathType: Prefix
-            backend:
-              service:
-                name: backend-service
-                port:
-                  number: 8080
-          - path: /api/auth
-            pathType: Exact
-            backend:
-              service:
-                name: backend-service
-                port:
-                  number: 8080
-          - path: /api/health
+          - path: /api
             pathType: Prefix
             backend:
               service:
@@ -123,28 +60,7 @@ spec:
     - host: www.machinelearningdegrees.com
       http:
         paths:
-          - path: /api/programs
-            pathType: Prefix
-            backend:
-              service:
-                name: backend-service
-                port:
-                  number: 8080
-          - path: /api/vote
-            pathType: Prefix
-            backend:
-              service:
-                name: backend-service
-                port:
-                  number: 8080
-          - path: /api/auth
-            pathType: Exact
-            backend:
-              service:
-                name: backend-service
-                port:
-                  number: 8080
-          - path: /api/health
+          - path: /api
             pathType: Prefix
             backend:
               service:
