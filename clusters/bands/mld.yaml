@@ -1,0 +1,83 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mld
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: mld
+  namespace: mld
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: mld
+  namespace: mld
+rules:
+  - apiGroups: ["*"]
+    resources: ["*"]
+    verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: mld
+  namespace: mld
+roleRef:
+  kind: Role
+  name: mld
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+  - kind: ServiceAccount
+    name: mld
+    namespace: mld
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  annotations:
+    sealedsecrets.bitnami.com/cluster-wide: "true"
+  creationTimestamp: null
+  name: github
+  namespace: mld
+spec:
+  encryptedData:
+    password: AgCxko6NPagGmr4rD26ZAOygGHH8Q76LxbW87cKkkGJj4hhFCri0F9EskkxrSQMtxGJaSclyXYNC/HVFpEHQNGu+F5omCYFM/xMORPs5vyX6VsryRtGd61QCb8Gn3F7Xnyh6UB9EiHs/sU18Eokja/vSVL1HjJdtVZa8sr3+u59+Q423TJ1bKoJg+BRgFmbbvUyRgiunmzMIcnnaM0civ66pn3i0/I8l+R1tpW7sqfwpJJRVR4Yy544o6IrEs9NHdIU8VXTQCXOqReFevHWOOuTbFA43gCAD8RKqQwcfBsru4lr4cmc2mVCNsjibxGzZwF5HoRTUULL7mGB1Vfd2f6WV7gm3sBEbluUMZDTK9zmG4g4o6AnppkoG7ch0ATY3z8hewxnNaApvCop4n2BarIKP5TBqgkAY9Clufpal+VnZkKacn8ySIes8T9MuyxRRz4cCAj6b2gwwATwaxfvvuSjhgtBN5FIV6CxR/mmr4yRdp7G5WQ8CNOu0BArAJkW6KMXlQNoR0xxiBLXa6DDCL1g1xu+j30avzEWgZrjI/gpqX57dlSqqrPKh1kvGERIcqk2Xh3cHOvQjUU1ygqwFnyhpRp8GdxxjlZy8ZM7/ZSFDfH7qW9Q/ItK+QaN5xTQd0R8YQwIEmMunoZD05NQHPVUVuhzmJHuwZqolL0C3g7OO8+O+vYiOyv6xoqFRcA6pDZV3HI7uq7gySonnU/8f3+BKD3gF9KCAEirOzQe3PpOOPDJZCPfWZOjM
+    username: AgACjWKMbipjtwYIKYvaFKYrq/UQ82TCDPYCZQbKOSS0s3NkQYNyWBqX7t6l1TnUSzNXdZP1mM2686jAVVczhYcS54E3Feq/H2ZKQsbY5vTJW0oJisPKhLjEPN6/VyRc+Cwg2zL0Y+iTi4zcb1fIcI4jn3QqBTsNJvusEaFRgkBGGPWk/jBSPwGa886thLbuErgLhhIIiVKUuzyS0RVhYT3v9Wy6G4pcCwKrQsk0z/VheVh8dT2ml1X3ifSXDhUDgq142OEV9DyO0inyWn3Ul4iK0kYrP6z/0Qo7WlXxO1+XLcX6U2sHBbakU1IqiQX1piJN+ijjVD6FPC+HV0YhxDDVLHlbYsT44xjBX0felCBl2wBqhsDCh0rwJhvUKC4g8GQKAgbKoqhoya4ewSTY6Dnd/kaE2oX5tnAuouF7qO5uWKXWRAAQ3C6XDqzl5T/4QobUurFJ5FwCWCLatUcKyxnyc4ITM5De9YFLfLG/Yg1u7MLjabKYYe/VcFCQetpIW4KyAMxTncxEZFLsRJwhDE67dMVcsKI03JjAtzZA6Xb8ZqGFONEkA8vHlahs4wnNQD+Fyjy5CTLUeLl9uWV0IfNqF538Ua/q9S2JwMdUVTeKPEXmnEvG7yfAjG6RMTIyybGKUXCfiLo8OIKN6I/QyNkcWX/5hV8K3FXM+AFSBrc/zNrqnXR7Y1nIBmuWLA+0Rfe5TJGp
+  template:
+    metadata:
+      annotations:
+        sealedsecrets.bitnami.com/cluster-wide: "true"
+      creationTimestamp: null
+      name: github
+      namespace: mld
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: mld
+  namespace: mld
+spec:
+  interval: 1m0s
+  secretRef:
+    name: github
+  url: https://github.com/jfreeland/mldegrees.git
+  ref:
+    branch: main
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: mld
+  namespace: mld
+spec:
+  interval: 1m0s
+  path: ./deploy/prod
+  prune: true
+  serviceAccountName: mld
+  sourceRef:
+    kind: GitRepository
+    name: mld
+  targetNamespace: mld
