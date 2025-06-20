@@ -39,7 +39,6 @@ kind: SealedSecret
 metadata:
   annotations:
     sealedsecrets.bitnami.com/cluster-wide: "true"
-  creationTimestamp: null
   name: github
   namespace: mld
 spec:
@@ -50,7 +49,6 @@ spec:
     metadata:
       annotations:
         sealedsecrets.bitnami.com/cluster-wide: "true"
-      creationTimestamp: null
       name: github
       namespace: mld
 ---
