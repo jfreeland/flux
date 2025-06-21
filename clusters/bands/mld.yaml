@@ -52,6 +52,22 @@ spec:
       name: github
       namespace: mld
 ---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  annotations:
+    sealedsecrets.bitnami.com/cluster-wide: "true"
+  name: dockerhub
+  namespace: mld
+spec:
+  encryptedData:
+    dockerconfigjson.json: AgCBRG62YgzzLols5j9jlewHhPxU51DVpz+1+y/KCD4wkcVrnwxe28IMfv/lsSP8hcdZnOVQGtYsGInDZjPo2pwjnTPTchpwAVfwLIJARN0rdUxqxphPvDJeVyyQnnlAth85eB1z4zlgEpenNFxpeOJlhK3KYkadpq709LvfjdftSeFk8KAV0YffdxN0mRkm1PGM2Zqhkx+Z+WsaiE4N3xBwm/dnPuwyUllcj7jFgtSXiaIpbeGn1W6pwK55tVK6qLz66NshVF7xRwaSKD7oR2HzWApv2735Li1hIRHJoJ5InUjbX7fm+cwWl5bTIEnJv2S9w0ocXtDwiWvo+PkZFhAbbznkTlgiPq67GkiIkp/5jJj1ntZo59vRgbbztccAx+Vn/XERnQoflwoGsRNtmthKqGQCYlpBs83NmKRH6wQAQAc24Nu3iSYwpGXJ7KXWUjhZlvMQyPJlusyUFfO/Ch9PQIfNV0+/tmuwDO/LbbmvfT6nmtGdwecKtfPBF953k0hExG77YU5KptjzjRb4u2tKj9+O1JZwlNLDvJnUTlONFYEhicqdbhh5G0YciTXw9u4pR1nYYVZDQyLkirDiX2pq5NTzheycCqondQZB2mZ4SuO3fm7iJ/+KUXLOyPtURXgWM9P5A/Le+RrpVJx1eJf7Nwn/3dC6HtjCEBAX06my80MvQE1QxTMCju9HnT52RC7vXcRdk/XO/YENqCpNvive0IEbib++8xFc5MASllEFcDuuTAqbH3XNjC8xLwSditYv6jGeeBJq1Y8lX8bNzhDLv4iBc/p5oZdu/NiWy0nJRt9Nx3KQDDuH+PUrMWlBN/3iw6/r4ztLLuf9rHlrNt3TXt9Z/ndLwoiP5EBabA==
+  template:
+    metadata:
+      name: dockerhub
+      namespace: mld
+    type: kubernetes.io/dockerconfigjson
+---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
