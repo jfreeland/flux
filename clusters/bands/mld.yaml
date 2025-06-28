@@ -44,6 +44,8 @@ metadata:
 spec:
   forProvider:
     userName: joey
+  providerConfigRef:
+    name: f6d-playground
   writeConnectionSecretToRef:
     namespace: mld
     name: aws-creds
