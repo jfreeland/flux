@@ -43,8 +43,8 @@ spec:
     customLabels: {}
     customAnnotations: {}
     provider:
-      # -- A list of Provider packages to install.
-      packages: []
+      packages:
+        - xpkg.upbound.io/crossplane-contrib/provider-aws:v0.53.0
 
     configuration:
       # -- A list of Configuration packages to install.
