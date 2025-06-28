@@ -33,7 +33,7 @@ spec:
   chart:
     spec:
       chart: crossplane
-      version: 2.0.0-rc.0.108.g3ce6a1399
+      version: v1.20.0
       sourceRef:
         kind: HelmRepository
         name: datadog
