@@ -47,8 +47,9 @@ spec:
       logs:
         enabled: true
         containerCollectAll: true
+      # OTELCOL | ERROR | (comp/forwarder/defaultforwarder/worker.go:195 in func1) | Too many errors for endpoint 'https://api./api/beta/sketches': retrying later
       otelCollector:
-        enabled: true
+        enabled: false
       helmCheck:
         enabled: true
     agents:
