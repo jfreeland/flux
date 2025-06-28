@@ -46,8 +46,10 @@ spec:
       logs:
         enabled: true
         containerCollectAll: true
-      # TODO: Need to find an image tag with otel-agent
-      #otelCollector:
-      #  enabled: true
+      otelCollector:
+        enabled: true
       helmCheck:
         enabled: true
+    agents:
+      image:
+        tag: 7-ot-beta
