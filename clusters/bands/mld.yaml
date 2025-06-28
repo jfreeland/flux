@@ -10,8 +10,10 @@ metadata:
   name: mld
   namespace: mld
 ---
+# NOTE: I'm speedrunning and bumping into:
+# Bucket/mld/mld-rds-backups dry-run failed (Forbidden): buckets.s3.aws.crossplane.io "mld-rds-backups" is forbidden: User "system:serviceaccount:mld:mld" cannot patch resource "buckets" in API group "s3.aws.crossplane.io" at the cluster scope
 apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
+kind: ClusterRole
 metadata:
   name: mld
   namespace: mld
@@ -21,18 +23,42 @@ rules:
     verbs: ["*"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
+kind: ClusterRoleBinding
 metadata:
   name: mld
   namespace: mld
 roleRef:
-  kind: Role
+  kind: ClusterRole
   name: mld
   apiGroup: rbac.authorization.k8s.io
 subjects:
   - kind: ServiceAccount
     name: mld
     namespace: mld
+---
+#apiVersion: rbac.authorization.k8s.io/v1
+#kind: Role
+#metadata:
+#  name: mld
+#  namespace: mld
+#rules:
+#  - apiGroups: ["*"]
+#    resources: ["*"]
+#    verbs: ["*"]
+#---
+#apiVersion: rbac.authorization.k8s.io/v1
+#kind: RoleBinding
+#metadata:
+#  name: mld
+#  namespace: mld
+#roleRef:
+#  kind: Role
+#  name: mld
+#  apiGroup: rbac.authorization.k8s.io
+#subjects:
+#  - kind: ServiceAccount
+#    name: mld
+#    namespace: mld
 ---
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
