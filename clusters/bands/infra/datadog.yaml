@@ -45,6 +45,7 @@ spec:
       kubeStateMetricsEnabled: true
       logs:
         enabled: true
+        containerCollectAll: true
       # TODO: Need to find an image tag with otel-agent
       #otelCollector:
       #  enabled: true
