@@ -17,7 +17,7 @@ TODO:
 
 ```bash
 kubectl -n mynamespace create secret generic mysecret --from-literal=some_thing=123 --from-literal=other_thing=OMG456 --dry-run=client -o yaml > tempsecret.yaml
-kubeseal --format=yaml --cert=pub-sealed-secrets.pem < tempsecret.yaml > sealedsecret.yaml
+kubeseal --scope=cluster-wide --format=yaml --cert=pub-sealed-secrets.pem < tempsecret.yaml > sealedsecret.yaml
 ```
 
 ```bash
