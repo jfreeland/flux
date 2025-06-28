@@ -11,3 +11,11 @@ metadata:
   namespace: datadog
 spec:
   itemPath: "vaults/kubernetes/items/test"
+---
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: another
+  namespace: datadog
+spec:
+  itemPath: "vaults/kubernetes/items/another"
