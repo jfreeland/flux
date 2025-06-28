@@ -53,4 +53,5 @@ spec:
         enabled: true
     agents:
       image:
+        doNotCheckTag: true
         tag: 7-ot-beta
