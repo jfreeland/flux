@@ -7,15 +7,7 @@ metadata:
 apiVersion: onepassword.com/v1
 kind: OnePasswordItem
 metadata:
-  name: test
+  name: datadog-keys
   namespace: datadog
 spec:
-  itemPath: "vaults/kubernetes/items/test"
----
-apiVersion: onepassword.com/v1
-kind: OnePasswordItem
-metadata:
-  name: another
-  namespace: datadog
-spec:
-  itemPath: "vaults/kubernetes/items/another"
+  itemPath: "vaults/kubernetes/items/datadog"
