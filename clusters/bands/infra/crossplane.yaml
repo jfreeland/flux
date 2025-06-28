@@ -5,13 +5,13 @@ kind: Namespace
 metadata:
   name: crossplane-system
 ---
-#apiVersion: onepassword.com/v1
-#kind: OnePasswordItem
-#metadata:
-#  name: datadog-keys
-#  namespace: datadog
-#spec:
-#  itemPath: "vaults/kubernetes/items/datadog"
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: aws-secret
+  namespace: crossplane-system
+spec:
+  itemPath: "vaults/kubernetes/items/aws"
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
@@ -21,14 +21,6 @@ metadata:
 spec:
   interval: 5m
   url: https://charts.crossplane.io/stable
----
-apiVersion: onepassword.com/v1
-kind: OnePasswordItem
-metadata:
-  name: aws-secret
-  namespace: crossplane-system
-spec:
-  itemPath: "vaults/kubernetes/items/aws"
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
