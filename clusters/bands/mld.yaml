@@ -36,20 +36,6 @@ subjects:
     name: mld
     namespace: mld
 ---
-apiVersion: iam.aws.crossplane.io/v1beta1
-kind: AccessKey
-metadata:
-  name: mld
-  namespace: mld
-spec:
-  forProvider:
-    userName: joey
-  providerConfigRef:
-    name: f6d-playground
-  writeConnectionSecretToRef:
-    namespace: mld
-    name: aws-creds
----
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
