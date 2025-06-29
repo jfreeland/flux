@@ -5,14 +5,6 @@ kind: Namespace
 metadata:
   name: crossplane-system
 ---
-apiVersion: onepassword.com/v1
-kind: OnePasswordItem
-metadata:
-  name: aws-secret
-  namespace: crossplane-system
-spec:
-  itemPath: "vaults/kubernetes/items/aws"
----
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
@@ -47,6 +39,14 @@ spec:
         - xpkg.upbound.io/crossplane-contrib/provider-aws:v0.53.0
         - xpkg.upbound.io/upbound/provider-datadog:v0.3.0
 ---
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: aws-secret
+  namespace: crossplane-system
+spec:
+  itemPath: "vaults/kubernetes/items/aws"
+---
 apiVersion: aws.crossplane.io/v1beta1
 kind: ProviderConfig
 metadata:
@@ -58,3 +58,23 @@ spec:
       namespace: crossplane-system
       name: aws-secret
       key: creds
+---
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: datadog-creds
+  namespace: crossplane-system
+spec:
+  itemPath: "vaults/kubernetes/items/datadog-crossplane"
+---
+apiVersion: aws.crossplane.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: datadog
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: datadog-creds
+      key: credentials
