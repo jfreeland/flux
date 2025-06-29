@@ -53,18 +53,17 @@ spec:
       helmCheck:
         enabled: true
     agents:
-      daemonsetAnnotations:
-        container.apparmor.security.beta.kubernetes.io/process-agent: unconfined
-        container.apparmor.security.beta.kubernetes.io/agent: unconfined
       containers:
         agent:
           securityContext:
             capabilities:
-              add: ["SYS_PTRACE"]
+              add:
+                - SYS_PTRACE
         processAgent:
           securityContext:
             capabilities:
-              add: ["SYS_PTRACE"]
+              add:
+                - SYS_PTRACE
       image:
         doNotCheckTag: true
         tag: 7-ot-beta
