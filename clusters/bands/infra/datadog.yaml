@@ -53,6 +53,8 @@ spec:
       helmCheck:
         enabled: true
     agents:
+      daemonsetAnnotations:
+        container.apparmor.security.beta.kubernetes.io/process-agent: unconfined
       image:
         doNotCheckTag: true
         tag: 7-ot-beta
