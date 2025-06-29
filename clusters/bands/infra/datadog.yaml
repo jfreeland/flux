@@ -59,11 +59,6 @@ spec:
             capabilities:
               add:
                 - SYS_PTRACE
-        processAgent:
-          securityContext:
-            capabilities:
-              add:
-                - SYS_PTRACE
       image:
         doNotCheckTag: true
         tag: 7-ot-beta
