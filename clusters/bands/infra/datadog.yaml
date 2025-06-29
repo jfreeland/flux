@@ -59,12 +59,6 @@ spec:
       podSecurity:
         podSecurityPolicy:
           create: true
-      containers:
-        agent:
-          securityContext:
-            capabilities:
-              add:
-                - SYS_PTRACE
       image:
         doNotCheckTag: true
         tag: 7-ot-beta
