@@ -53,7 +53,7 @@ spec:
       helmCheck:
         enabled: true
     agents:
-      daemonsetAnnotations:
+      podAnnotations:
         container.apparmor.security.beta.kubernetes.io/process-agent: unconfined
         container.apparmor.security.beta.kubernetes.io/agent: unconfined
       podSecurity:
