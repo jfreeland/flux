@@ -56,6 +56,9 @@ spec:
       daemonsetAnnotations:
         container.apparmor.security.beta.kubernetes.io/process-agent: unconfined
         container.apparmor.security.beta.kubernetes.io/agent: unconfined
+      podSecurity:
+        podSecurityPolicy:
+          create: true
       containers:
         agent:
           securityContext:
