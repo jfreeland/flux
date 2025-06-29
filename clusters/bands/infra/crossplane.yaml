@@ -67,7 +67,7 @@ metadata:
 spec:
   itemPath: "vaults/kubernetes/items/datadog-crossplane"
 ---
-apiVersion: aws.crossplane.io/v1beta1
+apiVersion: datadog.upbound.io/v1beta1
 kind: ProviderConfig
 metadata:
   name: datadog
