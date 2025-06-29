@@ -54,23 +54,14 @@ spec:
       name: github
       namespace: mld
 ---
-apiVersion: bitnami.com/v1alpha1
-kind: SealedSecret
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
 metadata:
-  annotations:
-    sealedsecrets.bitnami.com/cluster-wide: "true"
   name: dockerhub
   namespace: mld
 spec:
-  encryptedData:
-    .dockerconfigjson: AgAFkTtTe5C0QMfZ+LiOAdsqCeaC64Siwn9ek4BO1rzBsGrZETHZWWz4FQrQUQFS/nSfh2OK+dHlAhQQGiaW2JfJKOY+DXrbNkFJUAbI8wDL/aIZ8m8hTY8DwZW8ZGQMJpxjWt2iEnCZvpTGtloJ98kpkYt8YDPo3y5G2lBgBU7JScqFFKUXS2S80bbn/tCZ9wVsmNO0qdW3bM+LUF9blpvobXIqpc9NRXxKg7tzfYPCfJHDrrbcJMIPsY3uc5sKAnXi1ONjL7T1r48hXUEsdRUwZ374qcdZfmhpT+ErLLwyKPkrqqEELy03mbqIm8gc9Twy8xvy6HxC8fMcoEXwvGTnKemboZ8Y5Vm9CBEExBmQ3+0XuKUtC8e820Q5NwFrdrR3PnQ1grpRs5s/GEmTmiKTAqek0Tb+/UoJ/8sT3ts0VKy4oiA2YdWG6q3ErTmo/HQ5FzyMaDHjlVkKBvxvgEHrcrQIFWDIUFzD+tt49DASxMufOkmqp3OxI9i96/kaLniyPX8DQpTkMuG8jiY4qhU3mmJ4pke/f5eC/tfSIONCG4N7k1Dm5htI0hw/EJT2XlsKqU8bCYbG5iiuE/uaBkIJjrYmxY3DE3R0NUlcFyi3w2oGQ0/pSDv/bqDQamuE2HrpLrshkLe06Ux3oFpXn3tsBOxy5X9gK3EPtymvSa0UqaNzbwetpKEuV8AxZsfhDPR3yjBW+jKpkWw/zKfzbrRTRmBxKX5heyJBL2E0wMSNLyEq4IzgfRhxfKtlS303Fwepr7XsxWsV87k6vjSOeUFLDdnsnK14/z6BtVpPqVPVxbJp8vWzeuf+u4jW1NDAIWWg56+N5ZNwU2wXqUV4vvjkTAreEjAHByTAXjCKNw==
-  template:
-    metadata:
-      annotations:
-        sealedsecrets.bitnami.com/cluster-wide: "true"
-      name: dockerhub
-      namespace: mld
-    type: kubernetes.io/dockerconfigjson
+  itemPath: "vaults/kubernetes/items/dockerhub"
+type: kubernetes.io/dockerconfigjson
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
