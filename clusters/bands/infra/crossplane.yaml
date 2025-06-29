@@ -45,6 +45,7 @@ spec:
     provider:
       packages:
         - xpkg.upbound.io/crossplane-contrib/provider-aws:v0.53.0
+        - xpkg.upbound.io/upbound/provider-datadog:v0.3.0
 ---
 apiVersion: aws.crossplane.io/v1beta1
 kind: ProviderConfig
