@@ -42,6 +42,6 @@ spec:
       adminPassword: changeme
       ingress:
         enabled: true
-        ingressClassName: "nginx"
+        ingressClassName: "traefik"
         hosts:
           - grafana.f6d.dev
