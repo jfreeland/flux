@@ -44,4 +44,4 @@ spec:
         enabled: true
         ingressClassName: "traefik"
         hosts:
-          - grafana.f6d.dev
+          - grafana.mldegrees.com
