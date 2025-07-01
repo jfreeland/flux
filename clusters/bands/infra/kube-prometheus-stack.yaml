@@ -1,3 +1,4 @@
+# https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
 ---
 apiVersion: v1
 kind: Namespace
@@ -39,3 +40,8 @@ spec:
       namespaceOverride: ""
       adminUser: goon
       adminPassword: changeme
+      ingress:
+        enabled: true
+        ingressClassName: "nginx"
+        hosts:
+          - grafana.f6d.dev
