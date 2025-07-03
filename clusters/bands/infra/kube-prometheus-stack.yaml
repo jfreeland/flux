@@ -42,6 +42,6 @@ spec:
       adminPassword: changeme
       ingress:
         enabled: true
-        ingressClassName: "traefik"
+        ingressClassName: nginx
         hosts:
           - grafana.mldegrees.com
