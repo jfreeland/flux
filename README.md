@@ -4,9 +4,14 @@ my homelab playground.
 
 TODO:
 
+- persistent volumes
+- IAM anywhere
+- ceph
+- thanos
 - https://artifacthub.io/packages/helm/alekc/changedetection
 - https://github.com/rancher/system-upgrade-controller
 - https://artifacthub.io/packages/helm/harbor/harbor
+- Tailscale?
 
 ## sealedsecrets
 
