@@ -1,80 +1,80 @@
 # https://artifacthub.io/packages/helm/crossplane/crossplane
 ---
-#apiVersion: v1
-#kind: Namespace
-#metadata:
-#  name: crossplane-system
-#---
-#apiVersion: source.toolkit.fluxcd.io/v1beta1
-#kind: HelmRepository
-#metadata:
-#  name: crossplane-stable
-#  namespace: flux-system
-#spec:
-#  interval: 5m
-#  url: https://charts.crossplane.io/stable
-#---
-#apiVersion: helm.toolkit.fluxcd.io/v2
-#kind: HelmRelease
-#metadata:
-#  name: crossplane
-#  namespace: flux-system
-#spec:
-#  releaseName: crossplane
-#  targetNamespace: crossplane-system
-#  chart:
-#    spec:
-#      chart: crossplane
-#      version: 1.20.0
-#      sourceRef:
-#        kind: HelmRepository
-#        name: crossplane-stable
-#  interval: 5m
-#  values:
-#    replicas: 1
-#    customLabels: {}
-#    customAnnotations: {}
-#    provider:
-#      packages:
-#        - xpkg.upbound.io/crossplane-contrib/provider-aws:v0.53.0
-#        - xpkg.upbound.io/upbound/provider-datadog:v0.3.0
-#---
-#apiVersion: onepassword.com/v1
-#kind: OnePasswordItem
-#metadata:
-#  name: aws-secret
-#  namespace: crossplane-system
-#spec:
-#  itemPath: "vaults/kubernetes/items/aws"
-#---
-#apiVersion: aws.crossplane.io/v1beta1
-#kind: ProviderConfig
-#metadata:
-#  name: f6d-playground
-#spec:
-#  credentials:
-#    source: Secret
-#    secretRef:
-#      namespace: crossplane-system
-#      name: aws-secret
-#      key: creds
-#---
-#apiVersion: onepassword.com/v1
-#kind: OnePasswordItem
-#metadata:
-#  name: datadog-creds
-#  namespace: crossplane-system
-#spec:
-#  itemPath: "vaults/kubernetes/items/datadog-crossplane"
-#---
-#apiVersion: datadog.upbound.io/v1beta1
-#kind: ProviderConfig
-#metadata:
-#  name: datadog
-#spec:
-#  credentials:
-#    source: Secret
-#    secretRef:
-#      namespace: crossplane-system
-#      name: datadog-creds
-#      key: credentials
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: crossplane-system
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: crossplane-stable
+  namespace: flux-system
+spec:
+  interval: 5m
+  url: https://charts.crossplane.io/stable
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: crossplane
+  namespace: flux-system
+spec:
+  releaseName: crossplane
+  targetNamespace: crossplane-system
+  chart:
+    spec:
+      chart: crossplane
+      version: 1.20.0
+      sourceRef:
+        kind: HelmRepository
+        name: crossplane-stable
+  interval: 5m
+  values:
+    replicas: 1
+    customLabels: {}
+    customAnnotations: {}
+    provider:
+      packages:
+        - xpkg.upbound.io/crossplane-contrib/provider-aws:v0.53.0
+        - xpkg.upbound.io/upbound/provider-datadog:v0.3.0
+---
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: aws-secret
+  namespace: crossplane-system
+spec:
+  itemPath: "vaults/kubernetes/items/aws"
+---
+apiVersion: aws.crossplane.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: f6d-playground
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: aws-secret
+      key: creds
+---
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: datadog-creds
+  namespace: crossplane-system
+spec:
+  itemPath: "vaults/kubernetes/items/datadog-crossplane"
+---
+apiVersion: datadog.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: datadog
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: datadog-creds
+      key: credentials
