@@ -34,3 +34,30 @@ spec:
       enabled: false
       servicemonitor:
         enabled: false
+---
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: cloudflare-api-key
+  namespace: kube-system
+spec:
+  itemPath: "vaults/kubernetes/items/cert-manager"
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: cloudflare
+  namespace: kube-system
+spec:
+  acme:
+    email: joey@free.land
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: cloudflare-issuer-account-key
+    solvers:
+      - dns01:
+          cloudflare:
+            email: joey@free.land
+            apiKeySecretRef:
+              name: cloudflare-api-key
+              key: cloudflare-api-key
