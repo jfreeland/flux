@@ -1,4 +1,4 @@
-# https://artifacthub.io/packages/helm/bitnami-labs/sealed-secrets
+# https://artifacthub.io/packages/helm/longhorn/longhorn
 ---
 apiVersion: v1
 kind: Namespace
