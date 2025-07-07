@@ -29,8 +29,11 @@ spec:
   values:
     domainFilters:
       - f6d.dev
+    policy: sync
     provider:
       name: cloudflare
+    sources:
+      - ingress
     env:
       - name: CF_API_KEY
         valueFrom:
