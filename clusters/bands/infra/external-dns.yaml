@@ -1,0 +1,39 @@
+# https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/cloudflare.md#using-helm
+# NOTE: I'm using the cloudflare-api-key secret from cert-manager.
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: external-dns
+  namespace: flux-system
+spec:
+  interval: 5m
+  url: https://kubernetes-sigs.github.io/external-dns
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: external-dns
+  namespace: flux-system
+spec:
+  releaseName: external-dns
+  targetNamespace: kube-system
+  chart:
+    spec:
+      chart: external-dns
+      version: 0.17.0
+      sourceRef:
+        kind: HelmRepository
+        name: external-dns
+  interval: 5m
+  values:
+    provider:
+      name: cloudflare
+    env:
+      - name: CF_API_KEY
+        valueFrom:
+          secretKeyRef:
+            name: cloudflare-api-key
+            key: cloudflare-api-key
+      - name: CF_API_EMAIL
+        value: joeyfreeland@gmail.com
