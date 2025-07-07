@@ -1,5 +1,12 @@
 # https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/cloudflare.md#using-helm
-# NOTE: I'm using the cloudflare-api-key secret from cert-manager.
+---
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: external-dns-keys
+  namespace: kube-system
+spec:
+  itemPath: "vaults/kubernetes/items/external-dns"
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
@@ -38,7 +45,7 @@ spec:
       - name: CF_API_KEY
         valueFrom:
           secretKeyRef:
-            name: cloudflare-api-key
+            name: external-dns-keys
             key: cloudflare-api-key
       - name: CF_API_EMAIL
         value: joeyfreeland@gmail.com
