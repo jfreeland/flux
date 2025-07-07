@@ -50,14 +50,14 @@ metadata:
   namespace: kube-system
 spec:
   acme:
-    email: joey@free.land
+    email: joeyfreeland@gmail.com
     server: https://acme-staging-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: cloudflare-issuer-account-key
     solvers:
       - dns01:
           cloudflare:
-            email: joey@free.land
+            email: joeyfreeland@gmail.com
             apiKeySecretRef:
               name: cloudflare-api-key
               key: cloudflare-api-key
