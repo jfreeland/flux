@@ -27,6 +27,8 @@ spec:
         name: external-dns
   interval: 5m
   values:
+    domainFilters:
+      - f6d.dev
     provider:
       name: cloudflare
     env:
