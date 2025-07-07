@@ -44,7 +44,7 @@ spec:
   itemPath: "vaults/kubernetes/items/cert-manager"
 ---
 apiVersion: cert-manager.io/v1
-kind: Issuer
+kind: ClusterIssuer
 metadata:
   name: cloudflare
   namespace: kube-system
